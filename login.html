@@ -29,7 +29,7 @@
       overflow: hidden;
     }
 
-    /* ── PAGE FADE IN ── */
+    
     @keyframes fadeInPage {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -46,7 +46,7 @@
       z-index: 0;
     }
 
-    /* ── BACKGROUND ELEMENTS ── */
+    
     .bg-lines {
       position: fixed;
       inset: 0;
@@ -108,7 +108,7 @@
       pointer-events: none;
     }
 
-    /* ── LAYOUT ── */
+    
     .page {
       position: relative;
       z-index: 1;
@@ -117,7 +117,7 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    /* ── LEFT PANEL ── */
+    
     .left-panel {
       display: flex;
       flex-direction: column;
@@ -211,7 +211,7 @@
 
     .left-footer span { opacity: 0.4; }
 
-    /* ── RIGHT PANEL ── */
+    
     .right-panel {
       display: flex;
       align-items: center;
@@ -246,7 +246,7 @@
       line-height: 1.2;
     }
 
-    /* ── FORM ── */
+    
     .form-group {
       margin-bottom: 1.5rem;
       position: relative;
@@ -324,7 +324,7 @@
 
     .toggle-pw:hover { color: var(--gold-light); }
 
-    /* ── ERROR MSG ── */
+    
     .error-msg {
       display: none;
       font-size: 0.65rem;
@@ -335,7 +335,7 @@
 
     .error-msg.show { display: block; }
 
-    /* ── OPTIONS ROW ── */
+    
     .options-row {
       display: flex;
       justify-content: space-between;
@@ -396,7 +396,7 @@
 
     .forgot-link:hover { color: var(--gold-light); }
 
-    /* ── SUBMIT BUTTON ── */
+    
     .btn-login {
       width: 100%;
       padding: 1rem;
@@ -437,7 +437,7 @@
       animation: dots 1s steps(3, end) infinite;
     }
 
-    /* ── DIVIDER ── */
+    
     .divider {
       display: flex;
       align-items: center;
@@ -457,7 +457,7 @@
       background: rgba(224, 58, 30, 0.18);
     }
 
-    /* ── GUEST LINK ── */
+    
     .guest-link {
       display: block;
       text-align: center;
@@ -472,7 +472,7 @@
 
     .guest-link:hover { color: var(--gold-light); }
 
-    /* ── SUCCESS OVERLAY ── */
+    
     .success-overlay {
       position: fixed;
       inset: 0;
@@ -527,7 +527,7 @@
       font-style: italic;
     }
 
-    /* ── ANIMATIONS ── */
+    
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -545,7 +545,7 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* ── RESPONSIVE ── */
+    
     @media (max-width: 768px) {
       .page { grid-template-columns: 1fr; }
       .left-panel { display: none; }
@@ -597,9 +597,9 @@
         </div>
 
         <div class="form-group">
-          <label for="email">Username</label>
+          <label for="email">Email Address</label>
           <div class="input-wrap">
-            <input type="text" id="email" placeholder="e.g. ErwinAcorda" autocomplete="username" />
+            <input type="email" id="email" placeholder="your@email.com" autocomplete="username" />
             <span class="input-line"></span>
           </div>
         </div>
@@ -636,7 +636,7 @@
   </div>
 
   <script>
-    // Page fade-in
+    
     document.body.classList.add('page-enter');
 
     const loginBtn = document.getElementById('loginBtn');
@@ -648,9 +648,14 @@
 
     // Authorized accounts
     const ACCOUNTS = {
-      'ErwinAcorda': { password: '1111', display: 'Prof. Acorda' },
-      'ZoeCeniza':   { password: '0000', display: 'Zoe Ceniza' },
+      'erwin.acorda123@gmail.com': { password: 'Admin123', display: 'Prof. Acorda' },
+      'zoe.ceniza456@gmail.com':   { password: 'Admin456', display: 'Zoe Ceniza' },
     };
+
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Regex: min 6 chars, at least 1 uppercase, 1 lowercase, 1 digit
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
     togglePw.addEventListener('click', () => {
       const isText = pwInput.type === 'text';
@@ -663,11 +668,28 @@
     });
 
     loginBtn.addEventListener('click', () => {
-      const username = emailInput.value.trim();
+      const email = emailInput.value.trim();
       const pw = pwInput.value;
 
-      if (!username || !pw) {
+      
+      if (!email || !pw) {
         errorMsg.textContent = 'Please fill in all fields.';
+        errorMsg.classList.add('show');
+        shake(loginBtn);
+        return;
+      }
+
+     
+      if (!emailRegex.test(email)) {
+        errorMsg.textContent = 'Please enter a valid email address.';
+        errorMsg.classList.add('show');
+        shake(loginBtn);
+        return;
+      }
+
+      
+      if (!passwordRegex.test(pw)) {
+        errorMsg.textContent = 'Password must be 6+ chars with uppercase, lowercase & number.';
         errorMsg.classList.add('show');
         shake(loginBtn);
         return;
@@ -680,7 +702,7 @@
         loginBtn.classList.remove('loading');
         loginBtn.disabled = false;
 
-        const account = ACCOUNTS[username];
+        const account = ACCOUNTS[email];
         if (account && pw === account.password) {
           successOverlay.querySelector('p').textContent = `Welcome, ${account.display}.`;
           successOverlay.classList.add('show');
@@ -691,7 +713,7 @@
             }, 500);
           }, 1400);
         } else {
-          errorMsg.textContent = 'Incorrect username or password.';
+          errorMsg.textContent = 'Incorrect email or password.';
           errorMsg.classList.add('show');
           shake(loginBtn);
           pwInput.value = '';
