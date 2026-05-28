@@ -22,7 +22,7 @@
     @keyframes fadeInPage { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
     .page-enter { animation: fadeInPage 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
 
-    /* NAV */
+    
     nav {
       position: relative; z-index: 10;
       display: flex; align-items: center; justify-content: space-between;
@@ -53,7 +53,7 @@
     .delay-1 { transition-delay:0.1s; } .delay-2 { transition-delay:0.22s; }
     .delay-3 { transition-delay:0.38s; } .delay-4 { transition-delay:0.52s; }
 
-    /* HERO */
+    
     .hero { position:relative; z-index:1; min-height:calc(100vh - 80px); display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:0 4rem; overflow:hidden; gap:3rem; }
     .hero-bg-ember { position:absolute; bottom:0; right:0; width:55vw; height:55vw; border-radius:50%; background:radial-gradient(circle at 60% 60%, rgba(224,58,30,0.08) 0%, transparent 70%); pointer-events:none; animation:floatEmber 9s ease-in-out infinite; }
     @keyframes floatEmber { 0%,100% { transform:scale(1) translateY(0); } 50% { transform:scale(1.07) translateY(-24px); } }
@@ -74,7 +74,7 @@
     .btn-ghost:hover { color:var(--orange); }
     .btn-ghost:hover::after { transform:translateX(4px); }
 
-    /* HERO PHOTOS */
+    
     .hero-photos { position:relative; height:520px; display:flex; align-items:center; justify-content:center; }
     .photo-card { position:absolute; border:2px solid var(--border); overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.5); transition:box-shadow 0.4s ease, border-color 0.3s; cursor:pointer; }
     .photo-card:hover { box-shadow:0 30px 80px rgba(224,58,30,0.25); border-color:var(--crimson); z-index:10; }
@@ -87,20 +87,20 @@
     @keyframes floatCard2 { 0%,100% { top:55px; transform:rotate(4deg); } 50% { top:43px; transform:rotate(3deg); } }
     @keyframes floatCard3 { 0%,100% { bottom:10px; transform:translateX(-50%) rotate(-2deg); } 50% { bottom:22px; transform:translateX(-50%) rotate(-1deg); } }
 
-    /* MARQUEE */
+    
     .marquee-wrap { position:relative; z-index:1; border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; padding:0.9rem 0; }
     .marquee-track { display:flex; gap:3rem; width:max-content; animation:marquee 24s linear infinite; }
     .marquee-item { font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink-muted); white-space:nowrap; display:flex; align-items:center; gap:3rem; }
     .marquee-item::after { content:"✦"; color:var(--crimson); font-size:0.5rem; }
     @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 
-    /* SHARED */
+    
     .section-label { font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--crimson); margin-bottom:0.8rem; display:flex; align-items:center; gap:1rem; }
     .section-label::before { content:""; display:block; width:2rem; height:1px; background:var(--crimson); opacity:0.5; }
     .section-title { font-family:"Cormorant Garamond",serif; font-weight:300; font-size:clamp(2rem,3.5vw,3rem); color:var(--parchment); line-height:1.1; }
     .section-title em { font-style:italic; color:var(--orange); }
 
-    /* ABOUT */
+    
     .about-section { position:relative; z-index:1; border-top:1px solid var(--border); padding:6rem 4rem; }
     .about-grid { display:grid; grid-template-columns:340px 1fr; gap:5rem; align-items:start; margin-top:4rem; }
     .about-photo-wrap { position:relative; width:340px; }
@@ -125,7 +125,7 @@
     .fun-fact-item:last-child { margin-bottom:0; }
     .fun-fact-item::before { content:"✦"; color:var(--crimson); font-size:0.5rem; margin-top:0.3rem; flex-shrink:0; }
 
-    /* PROJECTS */
+    
     .projects-section { position:relative; z-index:1; border-top:1px solid var(--border); padding:6rem 4rem; }
     .section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:5rem; }
     .section-link { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-muted); text-decoration:none; transition:color 0.2s; display:flex; align-items:center; gap:0.5rem; }
@@ -156,7 +156,7 @@
     .tech-tag { font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-muted); border:1px solid var(--border); padding:0.3rem 0.6rem; transition:all 0.2s; }
     .tech-tag:hover { color:var(--crimson); border-color:rgba(224,58,30,0.4); }
 
-    /* CERTIFICATES */
+    
     .certs-section { position:relative; z-index:1; border-top:1px solid var(--border); padding:6rem 4rem; }
     .certs-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin-top:4rem; }
     .cert-card { border:1px solid var(--border); overflow:hidden; transition:border-color 0.3s, transform 0.4s; position:relative; }
@@ -169,7 +169,7 @@
     .cert-meta { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-muted); }
     .cert-meta span { color:var(--crimson); }
 
-    /* CONTACT */
+    
     .contact-section { position:relative; z-index:1; border-top:1px solid var(--border); padding:6rem 4rem; }
     .contact-items { display:flex; flex-direction:column; gap:1.5rem; margin-top:3rem; max-width:480px; }
     .contact-item { display:flex; align-items:center; gap:1.2rem; }
@@ -179,13 +179,13 @@
     .contact-value { font-size:0.68rem; letter-spacing:0.06em; color:var(--ink-muted); text-decoration:none; transition:color 0.2s; }
     .contact-value:hover { color:var(--orange); }
 
-    /* FOOTER */
+    
     footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:2rem 4rem; display:flex; align-items:center; justify-content:space-between; }
     .footer-left { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-muted); }
     .footer-left span { color:var(--crimson); }
     .footer-right { font-size:0.58rem; letter-spacing:0.15em; color:var(--ink-muted); }
 
-    /* RESPONSIVE */
+    
     @media (max-width:900px) {
       nav { padding:1.5rem 1.5rem; }
       .nav-links, .nav-cta { display:none; }
@@ -218,7 +218,7 @@
     <a href="#contact" class="nav-cta">Get in Touch</a>
   </nav>
 
-  <!-- HERO -->
+  
   <section class="hero">
     <div class="hero-bg-ember"></div>
     <div class="reveal">
@@ -252,7 +252,7 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
+  
   <div class="marquee-wrap">
     <div class="marquee-track">
       <div class="marquee-item">HTML & CSS</div>
@@ -278,7 +278,7 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
+  
   <section class="about-section" id="about">
     <div class="reveal">
       <p class="section-label">The Person Behind the Work</p>
@@ -316,7 +316,7 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  
   <section class="projects-section" id="projects">
     <div class="section-header">
       <div class="reveal">
@@ -383,7 +383,7 @@
     </div>
   </section>
 
-  <!-- CERTIFICATES -->
+  <
   <section class="certs-section" id="certificates">
     <div class="reveal">
       <p class="section-label">Certifications</p>
@@ -422,7 +422,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  
   <section class="contact-section" id="contact">
     <div class="reveal">
       <p class="section-label">Get in Touch</p>
@@ -453,7 +453,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  
   <footer>
     <div class="footer-left"><span>ZBC</span> · Zoe Beatrice R. Ceniza · BSIT 2-1</div>
     <div class="footer-right">Integrative Programming · Prof. Erwin Acorda · © 2025–2026</div>
